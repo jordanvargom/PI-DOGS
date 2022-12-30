@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.container button{
+    height: 40px;
+    width: 80px;
+    margin: 5px;
+    font-size: 17px;
+    background-color: #434242;
+    color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    font-family: lato , sans-serif;
+    padding: 0.5rem 0.5rem;
+    border-radius: 25%;
+    text-align: center;
+    justify-content: center;
+}
+.container button:hover{
+    box-shadow: 0 0.1rem 0.4rem #434242;
+}
+.container p {
+    padding: 5px;
+    font-size: 20px;
+    font-family: lato, sans-serif;
+}
+.container input{
+    height: 28px;
+    width: 28px;
+    border: solid 2px #434242;
+    font-size: 18px;
+    padding: 2px;
+    border-radius: 25%;
+    text-align: center;
+}

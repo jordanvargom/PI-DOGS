@@ -41,7 +41,7 @@ function Paginacion({ pagina, setPagina, maximo }) {
         onChange={(e) => onChange(e)}
         name="page"
         autoComplete="off"
-        value={input}
+        value={input > Math.ceil(maximo) ? 1 : input}
         onKeyDown={(e) => numPagina(e)}
       />
       <p>de {Math.ceil(maximo)}</p>

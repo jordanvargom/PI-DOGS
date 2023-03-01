@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { create_dog, get_temps } from "../../redux/actions";
 import Temps from "./Temps";
 import style from "../../stylesheets/CreateDog.module.css";
-import {validate} from './Controllers'
+import { validate } from './Controllers'
 
 function CreateDog() {
   const dispatch = useDispatch();
   const temps = useSelector((state) => state.temps);
-
+  const [loading, setLoading] = useState(false)
   const [dogs, setDogs] = useState({
     name: "",
     image: "",
@@ -47,12 +47,13 @@ function CreateDog() {
     });
   }
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault();
-    if(typeof errorMessage === 'string'){
+    if (typeof errorMessage === 'string') {
       return alert('El formulario contiene errores')
     }
-    dispatch(create_dog(dogs));
+    const xd = await dispatch(create_dog(dogs));
+    console.log(xd.data);
     setDogs({
       name: "",
       image: "",
@@ -161,10 +162,10 @@ function CreateDog() {
             {!dogs.temperament.length
               ? "aun no se añadieron temps"
               : dogs.temperament.map((el) => (
-                  <div key={id++} onClick={() => handleDelete(el)}>
-                    <Temps id={el} />
-                  </div>
-                ))}
+                <div key={id++} onClick={() => handleDelete(el)}>
+                  <Temps id={el} />
+                </div>
+              ))}
           </div>
 
           <p className={style.error}>{errorMessage}</p>

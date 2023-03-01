@@ -8,24 +8,27 @@
   height: 100vh;
 }
 
-.title{
+.title {
   width: 100;
   margin-bottom: 2rem;
-  font-family: Lato , sans-serif;
+  font-family: Lato, sans-serif;
   transition: text-shadow 0.3s ease;
   cursor: pointer;
   font-weight: 800;
 }
-.title:hover{
-  
+
+.title:hover {
+
   text-shadow: 0 0.1rem 0.4rem #181d31;
 }
+
 .sub_container {
   min-width: 100%;
   border: 0.5rem solid #25b687;
   border-radius: 5px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.75);
 }
+
 .container_elements {
   display: flex;
   flex-direction: row;
@@ -70,6 +73,103 @@
   padding: 0.2rem 0.4rem;
 }
 
-.temps{
-    font-size: 1.3rem;
+.temps {
+  font-size: 1.3rem;
+}
+
+.loadingContainer {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+}
+
+
+.ldsfacebook {
+  display: flex;
+  position: absolute;
+  width: 80px;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.ldsfacebook div {
+  display: inline-block;
+  position: absolute;
+}
+
+.ldsfacebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.ldsfacebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #25b687;
+  animation: ldsfacebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.ldsfacebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.ldsfacebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.ldsfacebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes ldsfacebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+.ldsfacebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.ldsfacebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.ldsfacebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes ldsfacebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
 }

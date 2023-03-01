@@ -18,9 +18,9 @@ export const validate = (
       return "El peso max deve ser un entero";
     if (life_span % 2 !== 0 && life_span % 2 !== 1)
       return "El promedio de vida deve ser un entero";
-    if (height_min > height_max)
+    if (parseInt(height_min) > parseInt(height_max))
       return "La altura min no puede ser mayor que la altura max";
-    if (weight_min > weight_max)
+    if (parseInt(weight_min) > parseInt(weight_max))
       return "El peso min no puede ser mayor que el peso max";
     if (!temperament.length) return "Debe elegir temperamentos";
     if( !name.length ||

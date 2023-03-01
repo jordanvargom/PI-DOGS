@@ -41,81 +41,89 @@ function Home() {
 
   return (
     <div className={style.container}>
-      <h1 className={style.title}>Henry PI Dogs Jorge Daniel</h1>
-      <div className={style.filtro}>
-        <div className={style.item}>
-          <section>
-            <p>Search: </p>
-            <input type="text" onChange={handleChange} />
-          </section>
-        </div>
-        <div className={style.item}>
-          <section>
-            <select onChange={handleSelect}>
-              <option disabled selected defaultValue>
-              Order by
-              </option>
-              <option value="A-Z">A-Z</option>
-              <option value="Z-A">Z-A</option>
-              <option value="Weight-Min">Weight-Min</option>
-              <option value="Weight-Max">Weight-Max</option>
-            </select>
-          </section>
-        </div>
-        <div className={style.item}>
-          <section>
-            <select name="temperament" onChange={tempSelect}>
-              <option disabled selected defaultValue>
-              Filter by Temperament
-              </option>
-              <option defaultValue>Todos</option>
-              {temps?.map((el) => (
-                <option value={el.name} key={el.id}>
-                  {el.name}
-                </option>
-              ))}
-            </select>
-          </section>
-        </div>
-      </div>
-      <div className={style.main_container}>
-        {state.length ? (
-          <div className={style.container_cards}>
-            {filtereDogs(dogs,buscador,cantidad,filtro,temp)
-              .slice(
-                (pagina - 1) * cantidad,
-                (pagina - 1) * cantidad + cantidad
-              )
-              .map((dog) => (
-                <div className={style.container_card} key={dog.id}>
-                  <Link to={`/dogs/dog${dog.id}`}>
-                    <Card
-                      key={dog.id}
-                      id={dog.id}
-                      name={dog.name}
-                      temperament={dog.temperament}
-                      weight={
-                        typeof dog.weight === "string"
-                          ? dog.weight
-                          : dog.weight.imperial
-                      }
-                      image={
-                        typeof dog.image === "string"
-                          ? dog.image
-                          : dog.image.url
-                      }
-                    />
-                  </Link>
-                </div>
-              ))}
+      {state.length ? (
+        <>
+          <h1 className={style.title}>Henry PI Dogs Jorge Daniel</h1>
+          <div className={style.filtro}>
+            <div className={style.item}>
+              <section>
+                <p>Search: </p>
+                <input type="text" onChange={handleChange} />
+              </section>
+            </div>
+            <div className={style.item}>
+              <section>
+                <select onChange={handleSelect}>
+                  <option disabled selected defaultValue>
+                    Order by
+                  </option>
+                  <option value="A-Z">A-Z</option>
+                  <option value="Z-A">Z-A</option>
+                  <option value="Weight-Min">Weight-Min</option>
+                  <option value="Weight-Max">Weight-Max</option>
+                </select>
+              </section>
+            </div>
+            <div className={style.item}>
+              <section>
+                <select name="temperament" onChange={tempSelect}>
+                  <option disabled selected defaultValue>
+                    Filter by Temperament
+                  </option>
+                  <option defaultValue>Todos</option>
+                  {temps?.map((el) => (
+                    <option value={el.name} key={el.id}>
+                      {el.name}
+                    </option>
+                  ))}
+                </select>
+              </section>
+            </div>
           </div>
-        ) : (
-          <h1>Cargando..... ;)</h1>
-        )}
-        {state.length ? (
-          <Paginacion pagina={pagina} setPagina={setPagina} maximo={max} />
-        ) : null}
-      </div>
+          <div className={style.main_container}>
+
+            <div className={style.container_cards}>
+              {filtereDogs(dogs, buscador, cantidad, filtro, temp)
+                .slice(
+                  (pagina - 1) * cantidad,
+                  (pagina - 1) * cantidad + cantidad
+                )
+                .map((dog) => (
+                  <div className={style.container_card} key={dog.id}>
+                    <Link to={`/dogs/dog${dog.id}`}>
+                      <Card
+                        key={dog.id}
+                        id={dog.id}
+                        name={dog.name}
+                        temperament={dog.temperament}
+                        weight={
+                          typeof dog.weight === "string"
+                            ? dog.weight
+                            : dog.weight.metric
+                        }
+                        image={
+                          typeof dog.image === "string"
+                            ? dog.image
+                            : dog.image.url
+                        }
+                      />
+                    </Link>
+                  </div>
+                ))}
+            </div>
+
+            {state.length ? (
+              <Paginacion pagina={pagina} setPagina={setPagina} maximo={max} />
+            ) : null}
+          </div>
+        </>
+      ) : (
+        <div className={style.loadingContainer}>
+          <div className={style.ldsfacebook}><div></div><div></div><div></div></div>
+
+
+        </div>
+      )}
     </div>
   );
 }

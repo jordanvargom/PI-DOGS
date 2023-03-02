@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import DogDetail from "./components/DogDetail";
 import CreateDog from "./components/CreateDog";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/dogs/dog:id" exact component={DogDetail} />
         <Route path="/dogs/createdog" component={CreateDog} />
       </Switch>
+      <Route path="/dogs" component={Footer} />
     </div>
   );
 }

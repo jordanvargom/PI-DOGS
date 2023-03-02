@@ -1,0 +1,42 @@
+footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #181d31;
+  color: white;
+  padding: 3rem 2rem;
+}
+
+footer div {
+  float: right;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  transition: color 0.2s ease;
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #EAE3D2;
+}
+
+footer p {
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+footer p:hover {
+  color: #EAE3D2;
+}
+
+img {
+  transition: box-shadow 0.2s ease;
+}
+
+section img:hover {
+  box-shadow: 0 0.1rem 0.4rem #1C3879;
+}

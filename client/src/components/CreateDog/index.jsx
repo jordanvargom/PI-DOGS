@@ -191,9 +191,9 @@ function CreateDog() {
               </div>
 
               <div className={style.temperament}>
-                Temperamntos Añadidos:{" "}
+                Added temperaments:{" "}
                 {!dogs.temperament.length
-                  ? "aun no se añadieron temps"
+                  ? "not yet added"
                   : dogs.temperament.map((el) => (
                     <div key={id++} onClick={() => handleDelete(el)}>
                       <Temps id={el} />
@@ -203,7 +203,7 @@ function CreateDog() {
 
               <p className={style.error}>{errorMessage}</p>
               <button type="submit" className={style.button_to_home} >
-                Crear Raza
+                Create Breed
               </button>
             </form>
           </div>

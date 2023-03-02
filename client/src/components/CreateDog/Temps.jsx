@@ -8,7 +8,7 @@ function Temps({ id }) {
   const temps = useSelector((state) => state.temps);
   useEffect(() => {
     dispatch(get_temps());
-  }, []);
+  }, [dispatch]);
   const name = temps.find((el) => el.id === id && el.name);
   return <p className={style.name_temperament}>{name.name}</p>;
 }

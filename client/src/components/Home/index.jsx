@@ -38,7 +38,7 @@ function Home() {
     setBuscador(e.target.value);
     setPagina(1);
   };
-
+  const render = filtereDogs(dogs, buscador, cantidad, filtro, temp)
   return (
     <div className={style.container}>
       {state.length ? (
@@ -47,8 +47,8 @@ function Home() {
           <div className={style.filtro}>
             <div className={style.item}>
               <section>
-                <p>Search: </p>
-                <input type="text" onChange={handleChange} />
+                <p>Search breed: </p>
+                <input className={style.input} type="text" onChange={handleChange} placeholder='Name...' />
               </section>
             </div>
             <div className={style.item}>
@@ -80,42 +80,47 @@ function Home() {
               </section>
             </div>
           </div>
-          <div className={style.main_container}>
-
-            <div className={style.container_cards}>
-              {filtereDogs(dogs, buscador, cantidad, filtro, temp)
-                .slice(
-                  (pagina - 1) * cantidad,
-                  (pagina - 1) * cantidad + cantidad
-                )
-                .map((dog) => (
-                  <div className={style.container_card} key={dog.id}>
-                    <Link to={`/dogs/dog${dog.id}`}>
-                      <Card
-                        key={dog.id}
-                        id={dog.id}
-                        name={dog.name}
-                        temperament={dog.temperament}
-                        weight={
-                          typeof dog.weight === "string"
-                            ? dog.weight
-                            : dog.weight.metric
-                        }
-                        image={
-                          typeof dog.image === "string"
-                            ? dog.image
-                            : dog.image.url
-                        }
-                      />
-                    </Link>
-                  </div>
-                ))}
+          {!render.length ? (
+            <div className={style.container}>
+              <h1>We have not found the breed</h1>
             </div>
+          ) : (
+            <div className={style.main_container}>
+              <div className={style.container_cards}>
+                {render
+                  .slice(
+                    (pagina - 1) * cantidad,
+                    (pagina - 1) * cantidad + cantidad
+                  )
+                  .map((dog) => (
+                    <div className={style.container_card} key={dog.id}>
+                      <Link to={`/dogs/dog${dog.id}`}>
+                        <Card
+                          key={dog.id}
+                          id={dog.id}
+                          name={dog.name}
+                          temperament={dog.temperament}
+                          weight={
+                            typeof dog.weight === "string"
+                              ? dog.weight
+                              : dog.weight.metric
+                          }
+                          image={
+                            typeof dog.image === "string"
+                              ? dog.image
+                              : dog.image.url
+                          }
+                        />
+                      </Link>
+                    </div>
+                  ))}
+              </div>
 
-            {state.length ? (
-              <Paginacion pagina={pagina} setPagina={setPagina} maximo={max} />
-            ) : null}
-          </div>
+              {state.length ? (
+                <Paginacion pagina={pagina} setPagina={setPagina} maximo={max} />
+              ) : null}
+            </div>
+          )}
         </>
       ) : (
         <div className={style.loadingContainer}>

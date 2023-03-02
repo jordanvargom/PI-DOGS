@@ -7,6 +7,7 @@ export const filtereDogs = (dogs,buscador,cantidad,filtro,temp) => {
         dog.name.toLowerCase().includes(buscador.toLowerCase())
       );
       maximo = filtrados.length / cantidad;
+      console.log(filtrados)
       return filtrados;
     }
     if (filtro === "Weight-Min") {

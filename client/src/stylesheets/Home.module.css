@@ -84,8 +84,10 @@
 }
 
 .item input {
+  height: auto;
   transition: box-shadow 0.3s ease;
-  font-size: 1.3rem;
+  padding: 0.3rem;
+  font-size: 1rem;
   border: 1px solid #25b687;
   border-top: none;
   outline: none;
